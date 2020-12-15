@@ -8,7 +8,6 @@ function MainPage() {
   // gets all the data from the server
   const fetchData = async () => {
     const { data: dataFromServer } = await axios.get(`/api/campaign`);
-    console.log(dataFromServer);
     setCampaignData(dataFromServer);
   };
 
@@ -28,7 +27,7 @@ function MainPage() {
       }}
     >
       <h1>Welcome to My Campaign Manager</h1>
-      {campaignData.length > 0 ? (
+      {Array.isArray(campaignData) && campaignData.length > 0 ? (
         campaignData.map((element) => {
           return (
             <CampaignCard
